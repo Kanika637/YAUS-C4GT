@@ -109,5 +109,8 @@
 ![image](https://user-images.githubusercontent.com/84350895/179026664-afa1b1ca-d9e8-4254-829e-ed30168b3837.png)
 
 
+## 15th July, 2022
 
+✅ Documentation for making an SDK created.
+✅ SDK Generated
 

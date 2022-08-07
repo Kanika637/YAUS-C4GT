@@ -3,13 +3,17 @@ import { NavLink } from "react-router-dom";
 import { Modal } from "antd";
 import React from "react";
 import { DatePicker, Space } from "antd";
+import { OnBoarding } from 'antd-onboarding';
+import 'antd-onboarding/assets/index.css';
+import 'antd/dist/antd.css';
 import { useEffect } from "react";
 import ReactDOM from "react-dom";
+/* import { Steps } from 'intro.js-react';
+import 'intro.js/introjs.css'; */
 import ReactApexChart from "react-apexcharts";
 import { Line } from '@ant-design/charts';
 import { Pie } from "@ant-design/charts";
 import lineChart from "../components/chart/configs/lineChart";
-
 import {
   Card,
   Col,
@@ -39,6 +43,31 @@ function Home() {
   const onChange = (e) => console.log(`radio checked:${e.target.value}`);
 
   const [reverse, setReverse] = useState(false);
+  const [enabled, setEnabled] = useState(true);
+  const [initialStep, setInitialStep] = useState(0);
+
+
+  const onExit = () => {
+    setEnabled(false)
+  }
+
+  /*  const steps = [
+     {
+       element: '.linkcreate',
+       intro: 'You can use this button for Creating Your Own Shorten URL ',
+       position: 'right',
+     },
+     {
+       element: '.full-width',
+       intro: 'You can see the stats of your Link Generated',
+       position: 'down',
+     },
+     {
+       element: '.linkshow',
+       intro: 'You can see detailed stats of each Link',
+     },
+ 
+   ]; */
 
   const dollor = [
     <svg
@@ -171,7 +200,7 @@ function Home() {
       ></path>
     </svg>,
   ];
-  
+
   const cart = [
     <svg
       width="22"
@@ -278,9 +307,8 @@ function Home() {
     },
   ];
 
-// fetching data for dashboard table
+  // fetching data for dashboard table
 
-  
 
   const myData = [
     { x: 'Jan', y: 0 },
@@ -297,109 +325,109 @@ function Home() {
     { x: 'Dec', y: 27 },
   ];
 
-// fetching data for the show stats button
+  // fetching data for the show stats button
 
-// async function exe(){
-//   // let {customeHashID}='gov32';
-//   const url='http://localhost:3233/gov32'
-// const response=await fetch(url);
+  // async function exe(){
+  //   // let {customeHashID}='gov32';
+  //   const url='http://localhost:3233/gov32'
+  // const response=await fetch(url);
 
-// const stats=await response.json();
-// console.log(stats);
-// return stats;
-// }
+  // const stats=await response.json();
+  // console.log(stats);
+  // return stats;
+  // }
 
-// exe();
+  // exe();
 
-// exe().then(stats=>{
-//   const customeHashID=stats.map(
-//     function (index){
-//       return index.customeHashID;
-//     }
-//   );
+  // exe().then(stats=>{
+  //   const customeHashID=stats.map(
+  //     function (index){
+  //       return index.customeHashID;
+  //     }
+  //   );
 
-//   console.log(customeHashID);
+  //   console.log(customeHashID);
 
-  
-  
-// }).catch((error)=>{
-//   console.log('fetch data failed', error);
-// })
 
-async function tab() {
-  const url = 'http://localhost:3233/dashboard_table'
-  const response = await fetch(url);
 
-  const objectData = await response.json();
-  console.log(objectData);
-  return objectData;
-}
+  // }).catch((error)=>{
+  //   console.log('fetch data failed', error);
+  // })
 
-tab();
+  async function tab() {
+    const url = 'http://localhost:3233/dashboard_table'
+    const response = await fetch(url);
 
-tab().then(objectData => {
-  const url = objectData.map(
-    function (index) {
-      return index.url;
-    }
-  )
-  const no_of_views = objectData.map(
-    function (index) {
-      return index.no_of_views;
-    }
-  )
-
-  const no_of_opens = objectData.map(
-    function (index) {
-      return index.no_of_opens;
-    }
-  )
-
-  const no_of_installs = objectData.map(
-    function (index) {
-      return index.no_of_installs;
-    }
-  )
-
-  const no_of_clicks = objectData.map(
-    function (index) {
-      return index.no_of_clicks;
-    }
-  )
-
-  const date_created = objectData.map(
-    function (index) {
-      return index.date_created;
-    }
-  )
-  for (let i = 0; i < data.length; i++) {
-    data[i].date = date_created[i];
+    const objectData = await response.json();
+    console.log(objectData);
+    return objectData;
   }
 
-  for (let i = 0; i < data.length; i++) {
-    data[i].clicks = no_of_clicks[i];
-  }
+  tab();
 
-  for (let i = 0; i < data.length; i++) {
-    data[i].install = no_of_installs[i];
-  }
+  tab().then(objectData => {
+    const url = objectData.map(
+      function (index) {
+        return index.url;
+      }
+    )
+    const no_of_views = objectData.map(
+      function (index) {
+        return index.no_of_views;
+      }
+    )
 
-  for (let i = 0; i < data.length; i++) {
-    data[i].views = no_of_views[i];
-  }
+    const no_of_opens = objectData.map(
+      function (index) {
+        return index.no_of_opens;
+      }
+    )
 
-  for (let i = 0; i < data.length; i++) {
-    data[i].open = no_of_opens[i];
-  }
-  for (let i = 0; i < data.length; i++) {
-    const url_data = url[i];
-    data[i].url = <a href="{url_data}">{url_data}</a>;
-  }
+    const no_of_installs = objectData.map(
+      function (index) {
+        return index.no_of_installs;
+      }
+    )
+
+    const no_of_clicks = objectData.map(
+      function (index) {
+        return index.no_of_clicks;
+      }
+    )
+
+    const date_created = objectData.map(
+      function (index) {
+        return index.date_created;
+      }
+    )
+    for (let i = 0; i < data.length; i++) {
+      data[i].date = date_created[i];
+    }
+
+    for (let i = 0; i < data.length; i++) {
+      data[i].clicks = no_of_clicks[i];
+    }
+
+    for (let i = 0; i < data.length; i++) {
+      data[i].install = no_of_installs[i];
+    }
+
+    for (let i = 0; i < data.length; i++) {
+      data[i].views = no_of_views[i];
+    }
+
+    for (let i = 0; i < data.length; i++) {
+      data[i].open = no_of_opens[i];
+    }
+    for (let i = 0; i < data.length; i++) {
+      const url_data = url[i];
+      data[i].url = <a href="{url_data}">{url_data}</a>;
+    }
 
 
-}).catch((error) => {
-  console.log('fetch data failed', error);
-})
+  }).catch((error) => {
+    console.log('fetch data failed', error);
+  })
 
   const data = [
     {
@@ -410,7 +438,7 @@ tab().then(objectData => {
       install: "",
       clicks: "",
       open: "",
-      
+
 
       action: (
         <Button onClick={() => setVisible(true)} type="primary">
@@ -462,7 +490,7 @@ tab().then(objectData => {
     },
   ];
 
-  
+
 
   const suffix = (
     <AudioOutlined
@@ -474,14 +502,21 @@ tab().then(objectData => {
   );
   const onSearch = (value) => console.log(value);
 
-  const onChange1 = (pagination, filters, sorter, extra) => {
-    console.log("params", pagination, filters, sorter, extra);
+  const onChange1 = (pagination, filters, sorter, extra,data) => {
+    console.log("params", pagination, filters, sorter, extra,data);
   };
 
 
   return (
     <>
-      <div>
+
+      {/*  <Steps
+        enabled={enabled}
+        steps={steps}
+        initialStep={initialStep}
+        onExit={onExit}
+      /> */}
+      <div class="MyApp">
 
         <Space direction="vertical" size={12}>
           <RangePicker />
@@ -495,7 +530,7 @@ tab().then(objectData => {
           onOk={() => setVisible(false)}
           onCancel={() => setVisible(false)}
           width={1200}
-          
+
         >
           <>
             <Row className="rowgap-vbox" gutter={[24, 0]}>
@@ -529,7 +564,7 @@ tab().then(objectData => {
             </Row>
             <br></br>
 
-{/* line graph */}
+            {/* line graph */}
             <Row gutter={[24, 0]}>
               <Col xs={24} sm={24} md={12} lg={12} xl={12} className="mb-24">
                 <Card title="Line Graph">
@@ -544,7 +579,7 @@ tab().then(objectData => {
                 </Card>
               </Col>
 
-{/* pie graph */}
+              {/* pie graph */}
               <Col xs={24} sm={24} md={12} lg={12} xl={12} className="mb-24">
                 <Card title="Pie">
                   <Pie {...config} />
@@ -572,22 +607,18 @@ tab().then(objectData => {
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         &nbsp;
-        <NavLink to="/LinkCreate">
+        <NavLink to="/LinkCreate" className="linkcreate">
           <Button type="primary">Create Your Link</Button>
         </NavLink>
 
         <>
-          <div className="linechart">
+          <div id="linechart">
             <div>
               <Title level={5}> Links Generated Till Now </Title>
-              {/* <Paragraph className="lastweek">
-            than last week <span className="bnb2">+30%</span>
-          </Paragraph> */}
+
             </div>
             <div className="sales">
               <ul>
-                {/* <li>{<MinusOutlined />} Traffic</li>
-            <li>{<MinusOutlined />} Clicks</li> */}
               </ul>
             </div>
           </div>
@@ -602,7 +633,33 @@ tab().then(objectData => {
         </>
         <br></br>
         <br></br>
-        <Table columns={columns} dataSource={data} onChange={onChange1} />;
+        <Table className="linkshow" columns={columns} dataSource={data} onChange={onChange1} />;
+        <OnBoarding
+          isShowMask={true}
+          steps={
+            [
+              {
+                selector: () => {
+                  return document.getElementById('linkcreate');
+                },
+                renderContent: () => {
+                  return (
+                    <div>This is my name!</div>
+                  );
+                }
+              },
+              {
+                selector: () => {
+                  return document.getElementById('linechart');
+                },
+                renderContent: () => {
+                  return (
+                    <div>This is my age!</div>
+                  );
+                }
+              }
+            ]
+          } />
       </div>
 
       {/* </div>

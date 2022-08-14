@@ -34,7 +34,8 @@ Read the docs here: https://api.readme.dev/docs
 <br>
 <br>
 
-![](images\ss.png)
+![ss](https://user-images.githubusercontent.com/84350895/184532511-477074d5-77a1-4c80-9957-654431e9bb26.png)
+
 
 - We can use our own created SDK like you use any other sdk.
 
@@ -42,8 +43,8 @@ Read the docs here: https://api.readme.dev/docs
 <br>
 <br>
 
+![ss2](https://user-images.githubusercontent.com/84350895/184532517-e1a7da18-2024-4615-84e6-93c125c69ebd.png)
 
-![](images\ss2.png)
 
 <br>
 <br>
@@ -51,7 +52,6 @@ Read the docs here: https://api.readme.dev/docs
 ## Time taken to build
 
 - As it requires to execute one command with the open spec defination of your specific API, the time taken to build the SDK will be comparitively less.
-
 
 ## Customised logic
 
@@ -101,8 +101,9 @@ Read the docs here: https://api.readme.dev/docs
  - Here we can see that we can form our own REST API using the API Gateway or can also import any existing API.
 
 <br>
+![s3](https://user-images.githubusercontent.com/84350895/184532528-5a4b475c-ac83-4997-9380-f67e4a2d54cb.png)
 
- ![](images\s3.png)
+ 
 
 <br>
 <br>
@@ -111,7 +112,8 @@ Read the docs here: https://api.readme.dev/docs
  <br>
 <br>
 
-![](images\s4.png)
+![s4](https://user-images.githubusercontent.com/84350895/184532536-63fc4c43-6900-4430-8cf1-3bc0f1e67f8d.png)
+
 
 - After clickig on `Generate SDK` your SDK will be downloaded in the form of a zip folder.
 
@@ -129,7 +131,9 @@ Read the docs here: https://api.readme.dev/docs
 - These are some of the APIs you can choose from or you can also import the swagger defination for your API.
 
 
-![](images\s5.png)
+![s5](https://user-images.githubusercontent.com/84350895/184532546-b0c5e2d8-f854-494d-9bf8-5a34fd02589b.png)
+
+
 <br>
 <br>
 - So if you want your SDK to be in JavaScript , you can try this.
